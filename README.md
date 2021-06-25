@@ -2,8 +2,8 @@
 I am AlexCZhou. A Cpp developer from Fuzhou, China. Currently learning Opengl.
 
 [![stats](https://github-readme-stats.vercel.app/api?username=AlexCZhou&count_private=true&show_icons=true&hide=prs&theme=dracula)](https://github.com/AlexCZhou)
-<!-- [![TopLangs](https://github-readme-stats.vercel.app/api/top-langs/?username=AlexCZhou&hide=javascript,html,css,plsql&layout=compact&theme=dracula)](https://github.com/AlexCZhou)
- -->
+
+[![TopLangs](https://github-readme-stats.vercel.app/api/top-langs/?username=AlexCZhou&hide=javascript,html,css,plsql&layout=compact&theme=dracula&card_width=445)](https://github.com/AlexCZhou)
 <!--
 **AlexCZhou/AlexCZhou** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
