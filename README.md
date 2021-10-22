@@ -1,5 +1,5 @@
 ### Hi there 👋
-I am AlexCZhou. A Cpp developer from Fuzhou, China. Currently learning Opengl.
+I am AlexCZhou. A Cpp developer from Fuzhou.
 
 [![stats](https://github-readme-stats.vercel.app/api?username=AlexCZhou&count_private=true&show_icons=true&hide=prs&theme=dracula)](https://github.com/AlexCZhou)
 
