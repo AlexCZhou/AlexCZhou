@@ -33,7 +33,30 @@ local plugins = {
         "neoclide/coc.nvim",
         lazy = false,
         priority = 1000,
+        -- the "master" branch need to build from source with yarn, use "release".
+        -- see https://github.com/neoclide/coc.nvim/issues/3258#issuecomment-900014514
+        branch = "release",
         opts = {},
+    },
+    -- vim-godot
+    {
+        "habamax/vim-godot",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            vim.cmd[[let g:godot_executable = "path/to/godot_executable"]]
+        end,
+    },
+    -- github copilot.vim
+    {
+        "github/copilot.vim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+
+        end,
     }
 }
 require("lazy").setup(plugins, opts);
@@ -52,5 +75,9 @@ vim.cmd[[
     set hidden
     set backspace   =indent,eol,start
     set display     =lastline
+    set statusline  =
+
+    set number
 ]]
+
 
