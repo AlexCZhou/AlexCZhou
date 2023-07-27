@@ -32,7 +32,6 @@ local plugins = {
     {
         "neoclide/coc.nvim",
         lazy = false,
-        priority = 1000,
         -- the "master" branch need to build from source with yarn, use "release".
         -- see https://github.com/neoclide/coc.nvim/issues/3258#issuecomment-900014514
         branch = "release",
@@ -42,7 +41,6 @@ local plugins = {
     {
         "habamax/vim-godot",
         lazy = false,
-        priority = 1000,
         opts = {},
         config = function()
             vim.cmd[[let g:godot_executable = "path/to/godot_executable"]]
@@ -53,7 +51,6 @@ local plugins = {
     {
         "github/copilot.vim",
         lazy = true,
-        priority = 1000,
         opts = {},
         config = function()
 
@@ -64,7 +61,6 @@ local plugins = {
     {
         "chrisbra/csv.vim",
         lazy = false,
-        priority = 1000,
         opts = {},
         config = function()
 
@@ -96,8 +92,15 @@ local plugins = {
     -- markdown-preview.nvim
     {
         "iamcco/markdown-preview.nvim",
-        lazy = false,
+        build = "cd app && npm install",
+        ft = "markdown",
+        lazy = true,
         config = function()
+            vim.g.mkdp_auto_start = 1;
+            vim.g.mkdp_open_ip = "127.0.0.1";
+            vim.g.mkdp_port = 8599;
+            vim.g.mkdp_browser = "";
+            vim.g.mkdp_echo_preview_url = 1;
         end,
     }
 }
