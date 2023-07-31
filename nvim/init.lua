@@ -21,11 +21,22 @@ local plugins = {
     -- tokyonight theme
     {
         "folke/tokyonight.nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         opts = {},
         config = function() 
-            vim.cmd[[colorscheme tokyonight]]
+            vim.cmd.colorscheme("tokyonight");
+        end,
+    },
+    -- nvim theme
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        lazy = false,
+        config = function()
+            vim.cmd.colorscheme("catppuccin");
         end,
     },
     -- coc.nvim
