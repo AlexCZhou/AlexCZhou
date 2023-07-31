@@ -71,6 +71,14 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
+            local configs = require("nvim-treesitter.configs");
+
+            configs.setup({
+                ensure_installed = {"c", "cpp", "vim", "vimdoc", "javascript", "lua", "gdscript"},
+                sync_install = false,
+                highlight = { enable = true },
+                indent = { enable = true },
+            });
         end
     },
     -- telescope.nvim
@@ -101,6 +109,30 @@ local plugins = {
             vim.g.mkdp_port = 8599;
             vim.g.mkdp_browser = "";
             vim.g.mkdp_echo_preview_url = 1;
+        end,
+    },
+    -- nvim-tree.lua
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            -- disable netrw at the very start of your init.lua
+            vim.g.loaded_netrw = 1;
+            vim.g.loaded_netrwPlugin = 1;
+
+            -- set termguicolors to enable highlight groups
+            vim.opt.termguicolors = true;
+
+            local api = require("nvim-tree.api");
+
+            -- custom mapping
+            vim.keymap.set("n", "<leader>tt", api.tree.toggle, {});
+
+            require("nvim-tree").setup();
         end,
     }
 }
