@@ -134,6 +134,14 @@ local plugins = {
 
             require("nvim-tree").setup();
         end,
+    },
+    -- akinsho/toggleterm.nvim
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            require("toggleterm").setup({});
+        end,
     }
 }
 require("lazy").setup(plugins, opts);
