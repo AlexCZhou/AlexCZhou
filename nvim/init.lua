@@ -153,6 +153,15 @@ local plugins = {
         config = function()
             require("toggleterm").setup({});
         end,
+    },
+    -- gitsigns.nvim
+    -- Super fast git decorations implemented purely in Lua.
+    {
+        "lewis6991/gitsigns.nvim",
+        lazy = false,
+        config = function()
+            require("gitsigns").setup();
+        end,
     }
 }
 require("lazy").setup(plugins, opts);
