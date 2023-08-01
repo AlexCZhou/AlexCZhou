@@ -1,5 +1,23 @@
 -- The init.lua for TypeAlpha(AlexCZhou)
 
+
+-- vimrc
+vim.cmd.set("nocompatible");
+
+vim.cmd.set("autoindent");
+vim.cmd.set("expandtab");
+vim.cmd.set("softtabstop =4");
+vim.cmd.set("shiftwidth  =4");
+vim.cmd.set("shiftround");
+
+vim.cmd.set("laststatus  =2");
+vim.cmd.set("hidden");
+vim.cmd.set("backspace   =indent,eol,start");
+vim.cmd.set("display     =lastline");
+vim.cmd.set("statusline  =");
+
+vim.cmd.set("number");
+
 -- Install lazy.nvim
 -- Beware of network errors. No error logs will be printed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -165,24 +183,4 @@ local plugins = {
     }
 }
 require("lazy").setup(plugins, opts);
-
--- vimrc
-vim.cmd[[
-    set nocompatible
-
-    set autoindent
-    set expandtab
-    set softtabstop =4
-    set shiftwidth  =4
-    set shiftround
-
-    set laststatus  =2
-    set hidden
-    set backspace   =indent,eol,start
-    set display     =lastline
-    set statusline  =
-
-    set number
-]]
-
 
