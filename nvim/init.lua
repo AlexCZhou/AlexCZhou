@@ -1,5 +1,6 @@
 -- The init.lua for TypeAlpha(AlexCZhou)
-
+-- this config first used on Neovim v0.9.1 with LuaJIT 2.1.0-beta3
+-- some plugins need Node gcc clang and etc... `:checkhealth` for more info.
 
 -- vimrc
 vim.cmd.set("nocompatible");
@@ -180,7 +181,17 @@ local plugins = {
         config = function()
             require("gitsigns").setup();
         end,
-    }
+    },
+    -- lualine.nvim
+    -- A blazing fast and easy to configure Neovim statusline written in Lua.
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        config = function()
+            require("lualine").setup();
+        end,
+    },
+    
 }
 require("lazy").setup(plugins, opts);
 
