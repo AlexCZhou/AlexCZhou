@@ -127,6 +127,16 @@ local plugins = {
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, {});
         end,
     },
+    -- telescope-project extension
+    {
+        "nvim-telescope/telescope-project.nvim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim"
+        },
+        config = function()
+            require("telescope").load_extension("project");
+        end,
+    },
     -- markdown-preview.nvim
     {
         "iamcco/markdown-preview.nvim",
@@ -171,6 +181,16 @@ local plugins = {
         version = "*",
         config = function()
             require("toggleterm").setup({});
+            
+            -- lazygit
+            local terminal = require("toggleterm.terminal").Terminal;
+            local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" });
+
+            function _lazygit_toggle()
+                lazygit:toggle()
+            end
+
+            vim.keymap.set("n", "<leader>lg", _lazygit_toggle, {});
         end,
     },
     -- gitsigns.nvim
