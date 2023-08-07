@@ -67,15 +67,6 @@ local plugins = {
         branch = "release",
         opts = {},
     },
-    -- vim-godot
-    {
-        "habamax/vim-godot",
-        lazy = false,
-        opts = {},
-        config = function()
-            vim.cmd[[let g:godot_executable = "path/to/godot_executable"]]
-        end,
-    },
     -- github copilot.vim
     -- AI code generation, buggy for now.
     {
@@ -135,6 +126,9 @@ local plugins = {
         },
         config = function()
             require("telescope").load_extension("project");
+            local project = require("telescope").extensions.project;
+
+            vim.keymap.set("n", "<leader>fp", project.project, {});
         end,
     },
     -- markdown-preview.nvim
@@ -246,7 +240,7 @@ local plugins = {
                         enable = false,
                     },
                     project = {
-                        enable = true,
+                        enable = false,
                         limit = 6,
                         action = function(path)
                             vim.cmd("e "..path); -- nvim-tree.lua will take over.
@@ -257,6 +251,22 @@ local plugins = {
                 },
             });
         end
+    },
+    -- Portable package manager for Neovim that runs everywhere Neovim runs.
+    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
+    {
+        "williamboman/mason.nvim",
+        enabled = false,
+        config = function()
+            require("mason").setup();
+        end,
+    },
+    {
+        "neovim/nvim-lspconfig",
+        enabled = false,
+        config = function()
+            require"lspconfig".clangd.setup{};
+        end,
     }
 }
 require("lazy").setup(plugins, opts);
