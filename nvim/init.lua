@@ -267,6 +267,12 @@ local plugins = {
         config = function()
             require"lspconfig".clangd.setup{};
         end,
+    },
+    -- vim-fugitive
+    {
+        "tpope/vim-fugitive",
+        config = function()
+        end,
     }
 }
 require("lazy").setup(plugins, opts);
