@@ -309,7 +309,14 @@ local plugins = {
             -- …etc.
         },
         version = '^1.0.0', -- optional: only update when a new 1.x version is released
-    }
+    },
+    -- Comment.nvim
+    {
+        "numToStr/Comment.nvim",
+        opts = {
+        },
+        lazy = false
+    },
 }
 require("lazy").setup(plugins, opts);
 
