@@ -56,7 +56,7 @@ local plugins = {
         lazy = false,
         config = function()
             require("catppuccin").setup({
-                transparent_background = true,
+                show_end_of_buffer = true,
             });
             vim.cmd.colorscheme("catppuccin");
         end,
@@ -317,6 +317,14 @@ local plugins = {
         },
         lazy = false
     },
+    -- nvim.dap 
+    -- nvim-dap is a Debug Adapter Protocol client implementation for Neovim.
+    {
+        "mfussenegger/nvim-dap",
+        lazy = false,
+        config = function()
+        end,
+    }
 }
 require("lazy").setup(plugins, opts);
 
