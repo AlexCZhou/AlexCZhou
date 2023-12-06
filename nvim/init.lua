@@ -87,7 +87,7 @@ local plugins = {
         lazy = false,
         opts = {},
         config = function()
-
+            vim.g.csv_delim=",";
         end,
     },
     -- nvim-treesitter
