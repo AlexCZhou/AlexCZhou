@@ -40,17 +40,22 @@ local plugins = {
     -- tokyonight theme
     {
         "folke/tokyonight.nvim",
-        enabled = false,
+        enabled = true,
         lazy = false,
         priority = 1000,
         opts = {},
         config = function() 
+            require("tokyonight").setup({
+                style = "night",
+                transparent = true,
+            });
             vim.cmd.colorscheme("tokyonight");
         end,
     },
     -- nvim theme
     {
         "catppuccin/nvim",
+        enabled = false,
         name = "catppuccin",
         priority = 1000,
         lazy = false,
@@ -204,6 +209,9 @@ local plugins = {
     {
         "nvim-lualine/lualine.nvim",
         lazy = false,
+        opts = {
+            theme = "tokyonight-night"
+        },
         config = function()
             require("lualine").setup();
         end,
