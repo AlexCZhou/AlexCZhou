@@ -69,6 +69,7 @@ local plugins = {
     -- coc.nvim
     {
         "neoclide/coc.nvim",
+        enabled = false,
         lazy = false,
         -- the "master" branch need to build from source with yarn, use "release".
         -- see https://github.com/neoclide/coc.nvim/issues/3258#issuecomment-900014514
@@ -209,11 +210,11 @@ local plugins = {
     {
         "nvim-lualine/lualine.nvim",
         lazy = false,
-        opts = {
-            theme = "tokyonight-night"
-        },
+        opts = {},
         config = function()
-            require("lualine").setup();
+            require("lualine").setup({
+                theme = "tokyonight-night"
+            });
         end,
     },
     -- dashboard-nvim
@@ -267,16 +268,62 @@ local plugins = {
     -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
     {
         "williamboman/mason.nvim",
-        enabled = false,
+        enabled = true,
         config = function()
             require("mason").setup();
         end,
     },
     {
         "neovim/nvim-lspconfig",
-        enabled = false,
+        enabled = true,
         config = function()
-            require"lspconfig".clangd.setup{};
+
+            -- Setup language servers.
+            local lspconfig = require('lspconfig')
+            lspconfig.eslint.setup({
+                root_dir = function(fname)
+                    return lspconfig.util.root_pattern(".eslintrc.js")(fname) or vim.loop.cwd()
+                end,
+            })
+
+            -- Global mappings.
+            -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+            vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+            vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+            vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+            -- Use LspAttach autocommand to only map the following keys
+            -- after the language server attaches to the current buffer
+            vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    -- Enable completion triggered by <c-x><c-o>
+                    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+                    -- Buffer local mappings.
+                    -- See `:help vim.lsp.*` for documentation on any of the below functions
+                    local opts = { buffer = ev.buf }
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+                    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+                    vim.keymap.set('n', '<space>wl', function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, opts)
+                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+                    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                    vim.keymap.set('n', '<space>f', function()
+                        vim.lsp.buf.format { async = true }
+                    end, opts)
+                end,
+            })
+
         end,
     },
     -- vim-fugitive
