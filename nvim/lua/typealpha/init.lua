@@ -1,3 +1,4 @@
-require("typealpha.lazy")
+require("typealpha.remap")
 require("typealpha.set")
+require("typealpha.lazy")
 
