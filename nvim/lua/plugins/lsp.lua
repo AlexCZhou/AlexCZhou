@@ -5,6 +5,7 @@ return {
     {
         "williamboman/mason.nvim",
         enabled = true,
+        lazy = false,
         config = function()
             require("mason").setup();
         end,
@@ -13,14 +14,6 @@ return {
         "neovim/nvim-lspconfig",
         enabled = true,
         config = function()
-
-            -- Setup language servers.
-            local lspconfig = require('lspconfig')
-            lspconfig.eslint.setup({
-                root_dir = function(fname)
-                    return lspconfig.util.root_pattern(".eslintrc.js")(fname) or vim.loop.cwd()
-                end,
-            })
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions

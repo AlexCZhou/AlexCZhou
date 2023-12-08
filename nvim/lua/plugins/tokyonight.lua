@@ -6,7 +6,6 @@ return {
     priority = 1000,
     opts = {},
     config = function() 
-        print("hello world from tokyonight");
         require("tokyonight").setup({
             style = "night",
             transparent = true,
