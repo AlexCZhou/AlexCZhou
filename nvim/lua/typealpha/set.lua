@@ -13,3 +13,5 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.display = "lastline"
 vim.opt.statusline = ""
 
+vim.opt.signcolumn = "yes" -- for lsp
+
