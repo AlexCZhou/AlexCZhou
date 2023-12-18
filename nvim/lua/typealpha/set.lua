@@ -15,3 +15,6 @@ vim.opt.statusline = ""
 
 vim.opt.signcolumn = "yes" -- for lsp
 
+-- GUI
+vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h11"
+
